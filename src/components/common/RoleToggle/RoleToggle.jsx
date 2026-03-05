@@ -1,19 +1,17 @@
-import { useNavigate, useLocation } from 'react-router-dom';
 import { useAppState, useAppDispatch } from '../../../contexts/AppContext.jsx';
 import styles from './RoleToggle.module.css';
 
 export default function RoleToggle() {
-	const { restaurant } = useAppState();
+	const { restaurant, role } = useAppState();
 	const dispatch = useAppDispatch();
-	const navigate = useNavigate();
-	const location = useLocation();
 
-	const isAdmin = location.pathname === '/admin';
+	// Determine current role
+	const isAdmin = role === 'admin';
 
+	// Switch role only via state
 	function handleToggle() {
 		const nextRole = isAdmin ? 'waiter' : 'admin';
 		dispatch({ type: 'SET_ROLE', role: nextRole });
-		navigate(isAdmin ? '/waiter' : '/admin');
 	}
 
 	return (
