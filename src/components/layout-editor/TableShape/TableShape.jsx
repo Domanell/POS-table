@@ -210,7 +210,8 @@ export default function TableShape({
 					onPointerDown={(e) => {
 						e.stopPropagation();
 						e.currentTarget.setPointerCapture(e.pointerId);
-						rotateDown(e, getCenter());
+						// Передаем текущий угол rotation для корректного старта вращения
+						rotateDown(e, getCenter(), table.rotation ?? 0);
 					}}
 					title="Rotate table"
 				/>
