@@ -220,7 +220,7 @@ export function defaultTableStatus() {
 	return {
 		status: 'available',
 		reservation: { guestName: '', startTime: '', endTime: '', guestCount: 0 },
-		order: { status: 'none', items: [] },
+		order: { status: 'none' },
 	};
 }
 

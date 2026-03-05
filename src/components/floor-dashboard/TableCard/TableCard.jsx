@@ -4,7 +4,6 @@ import styles from './TableCard.module.css';
 const STATUS_MAP = {
 	available: { label: 'Free', varName: '--status-available' },
 	occupied: { label: 'Occupied', varName: '--status-occupied' },
-	reserved: { label: 'Reserved', varName: '--status-reserved' },
 	awaiting_payment: { label: 'Bill', varName: '--status-awaiting-payment' },
 };
 
@@ -63,9 +62,6 @@ export default function TableCard({ table, status, selected, onSelect }) {
 
 				{/* Reservation chip — shown whenever a reservation exists, regardless of table status */}
 				{reservation?.startTime && <span className={styles.reservationChip}>{formatTime(reservation.startTime)}</span>}
-
-				{/* Order progress dot */}
-				{showOrderDot && <span className={styles.orderDot} data-order-status={order.status} title={`Order: ${order.status}`} />}
 			</div>
 		</div>
 	);

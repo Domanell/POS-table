@@ -3,7 +3,6 @@ import styles from './FilterBar.module.css';
 const STATUS_OPTIONS = [
 	{ value: 'available', label: 'Free' },
 	{ value: 'occupied', label: 'Occupied' },
-	{ value: 'reserved', label: 'Reserved' },
 	{ value: 'awaiting_payment', label: 'Bill' },
 ];
 
