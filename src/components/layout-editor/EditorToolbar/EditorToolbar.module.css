@@ -1,0 +1,73 @@
+.toolbar {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	padding: 0 var(--space-4);
+	height: 48px;
+	background: var(--color-surface);
+	border-bottom: 1px solid var(--color-border);
+	flex-shrink: 0;
+	overflow-x: auto;
+}
+
+.groupLabel {
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--color-text-muted);
+	white-space: nowrap;
+	padding-right: var(--space-1);
+}
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	padding: 5px 10px;
+	border-radius: var(--radius-sm);
+	background: var(--color-surface-2);
+	border: 1px solid var(--color-border);
+	color: var(--color-text);
+	font-size: 12px;
+	font-weight: 500;
+	white-space: nowrap;
+	cursor: pointer;
+	transition:
+		background var(--transition-fast),
+		border-color var(--transition-fast),
+		opacity var(--transition-fast);
+}
+.btn:hover:not(:disabled) {
+	background: var(--color-surface-3);
+	border-color: var(--color-accent);
+}
+.btn:disabled {
+	opacity: 0.35;
+	cursor: not-allowed;
+}
+
+.danger:hover:not(:disabled) {
+	border-color: var(--color-danger);
+	color: var(--color-danger);
+}
+
+.accent {
+	background: rgba(79, 128, 255, 0.15);
+	border-color: var(--color-accent);
+	color: var(--color-accent);
+}
+.accent:hover:not(:disabled) {
+	background: rgba(79, 128, 255, 0.28);
+}
+
+.divider {
+	width: 1px;
+	height: 24px;
+	background: var(--color-border);
+	flex-shrink: 0;
+}
+
+.spacer {
+	flex: 1;
+}

@@ -1,0 +1,113 @@
+.header {
+	display: flex;
+	align-items: center;
+	gap: var(--space-4);
+	height: 52px;
+	padding: 0 var(--space-5);
+	background: var(--color-surface);
+	border-bottom: 1px solid var(--color-border);
+	flex-shrink: 0;
+	z-index: var(--z-header);
+}
+
+.brand {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	color: var(--color-accent);
+}
+
+.restaurantName {
+	font-size: 15px;
+	font-weight: 600;
+	color: var(--color-text);
+	white-space: nowrap;
+}
+
+/* ── Toggle button ── */
+.toggleBtn {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	padding: 6px 14px 6px 10px;
+	border-radius: var(--radius-lg);
+	background: var(--color-surface-2);
+	border: 1px solid var(--color-border);
+	color: var(--color-text-muted);
+	font-size: 13px;
+	transition:
+		background var(--transition-base),
+		border-color var(--transition-base);
+	cursor: pointer;
+	margin-left: auto;
+}
+.toggleBtn:hover {
+	background: var(--color-surface-3);
+	border-color: var(--color-accent);
+	color: var(--color-text);
+}
+
+.modeLabel {
+	font-weight: 600;
+	color: var(--color-text);
+}
+
+.modeLabelNext {
+	font-size: 12px;
+	opacity: 0.6;
+}
+
+/* ── Track + thumb (visual switch indicator) ── */
+.track {
+	display: inline-flex;
+	align-items: center;
+	width: 32px;
+	height: 18px;
+	border-radius: 9px;
+	background: var(--color-border);
+	position: relative;
+	transition: background var(--transition-base);
+	flex-shrink: 0;
+}
+
+.adminActive .track {
+	background: var(--color-accent);
+}
+.waiterActive .track {
+	background: var(--status-available);
+}
+
+.thumb {
+	position: absolute;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: #fff;
+	transition: left var(--transition-base);
+	left: 3px;
+}
+.adminActive .thumb {
+	left: calc(100% - 15px);
+}
+.waiterActive .thumb {
+	left: 3px;
+}
+
+/* ── Role badge ── */
+.badge {
+	padding: 3px 10px;
+	border-radius: var(--radius-sm);
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	flex-shrink: 0;
+}
+.badge[data-role='admin'] {
+	background: rgba(79, 128, 255, 0.18);
+	color: var(--color-accent);
+}
+.badge[data-role='waiter'] {
+	background: var(--status-available-bg);
+	color: var(--status-available);
+}

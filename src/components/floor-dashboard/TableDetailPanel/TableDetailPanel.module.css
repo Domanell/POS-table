@@ -1,0 +1,455 @@
+.panel {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 320px;
+	background: var(--color-surface);
+	border-left: 1px solid var(--color-border);
+	display: flex;
+	flex-direction: column;
+	z-index: var(--z-panel);
+	box-shadow: -4px 0 24px rgba(0, 0, 0, 0.35);
+	animation: slideIn 180ms ease;
+	overflow: hidden;
+}
+
+@keyframes slideIn {
+	from {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+/* ── Header ── */
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--space-4) var(--space-5);
+	border-bottom: 1px solid var(--color-border);
+	flex-shrink: 0;
+}
+
+.tableInfo {
+	display: flex;
+	align-items: baseline;
+	gap: var(--space-2);
+}
+
+.tableNum {
+	font-size: 18px;
+	font-weight: 800;
+	color: var(--color-text);
+}
+
+.tableCapacity {
+	font-size: 12px;
+	color: var(--color-text-muted);
+}
+
+.closeBtn {
+	width: 28px;
+	height: 28px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background: var(--color-surface-2);
+	color: var(--color-text-muted);
+	font-size: 12px;
+	cursor: pointer;
+	transition:
+		background var(--transition-fast),
+		color var(--transition-fast);
+	border: none;
+}
+.closeBtn:hover {
+	background: var(--color-surface-3);
+	color: var(--color-text);
+}
+
+/* ── Status pills row ── */
+.statusRow {
+	display: flex;
+	gap: var(--space-1);
+	padding: var(--space-3) var(--space-5);
+	border-bottom: 1px solid var(--color-border);
+	overflow-x: auto;
+	flex-shrink: 0;
+}
+
+.statusPill {
+	padding: 4px 10px;
+	border-radius: 12px;
+	background: var(--color-surface-2);
+	border: 1px solid var(--color-border);
+	color: var(--color-text-muted);
+	font-size: 11px;
+	font-weight: 600;
+	cursor: pointer;
+	white-space: nowrap;
+	transition:
+		background var(--transition-fast),
+		border-color var(--transition-fast),
+		color var(--transition-fast);
+}
+.statusPill:hover {
+	color: var(--color-text);
+	border-color: var(--pill-color);
+}
+.statusPillActive {
+	background: color-mix(in srgb, var(--pill-color) 20%, transparent);
+	border-color: var(--pill-color);
+	color: var(--pill-color);
+}
+
+/* ── Tab bar ── */
+.tabs {
+	display: flex;
+	border-bottom: 1px solid var(--color-border);
+	flex-shrink: 0;
+}
+
+.tab {
+	flex: 1;
+	padding: var(--space-2) 0;
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--color-text-muted);
+	border-bottom: 2px solid transparent;
+	cursor: pointer;
+	transition:
+		color var(--transition-fast),
+		border-color var(--transition-fast);
+	text-align: center;
+	background: none;
+	border-left: none;
+	border-right: none;
+	border-top: none;
+}
+.tab:hover {
+	color: var(--color-text);
+}
+.tabActive {
+	color: var(--color-accent);
+	border-bottom-color: var(--color-accent);
+}
+
+/* ── Tab content ── */
+.tabContent {
+	flex: 1;
+	overflow-y: auto;
+}
+
+.section {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-4);
+	padding: var(--space-4) var(--space-5);
+}
+
+/* ── Reservation summary shown in the status tab ── */
+.reservationSummary {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-1);
+}
+
+/* Amber-tinted box to make reservation stand out as informational */
+.reservationInfo {
+	font-size: 13px;
+	color: var(--color-text);
+	background: rgba(251, 140, 0, 0.1);
+	border: 1px solid rgba(251, 140, 0, 0.28);
+	border-radius: var(--radius-sm);
+	padding: var(--space-2) var(--space-3);
+	line-height: 1.6;
+}
+
+/* ── Reservation summary shown in the status tab ── */
+.reservationSummary {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-1);
+}
+
+/* Amber-tinted box — informational, not a status blocker */
+.reservationInfo {
+	font-size: 13px;
+	color: var(--color-text);
+	background: rgba(251, 140, 0, 0.1);
+	border: 1px solid rgba(251, 140, 0, 0.28);
+	border-radius: var(--radius-sm);
+	padding: var(--space-2) var(--space-3);
+	line-height: 1.6;
+}
+
+/* ── Status tab ── */
+.currentStatus {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+}
+
+.statusDot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+
+.statusText {
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--color-text);
+}
+
+/* ── Order progress ── */
+.orderProgress {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-2);
+}
+
+.progressPills {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+}
+
+.progressPill {
+	padding: 2px 8px;
+	border-radius: 10px;
+	background: var(--color-surface-2);
+	border: 1px solid var(--color-border);
+	font-size: 10px;
+	font-weight: 500;
+	color: var(--color-text-muted);
+}
+
+.progressPillActive {
+	background: rgba(79, 128, 255, 0.2);
+	border-color: var(--color-accent);
+	color: var(--color-accent);
+}
+
+/* ── Actions ── */
+.actions {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-2);
+	margin-top: var(--space-2);
+}
+
+.actionBtn {
+	padding: 8px 14px;
+	border-radius: var(--radius-sm);
+	font-size: 12px;
+	font-weight: 600;
+	cursor: pointer;
+	text-align: center;
+	border: none;
+	transition:
+		background var(--transition-fast),
+		filter var(--transition-fast);
+}
+
+.advanceBtn {
+	padding: 7px 12px;
+	border-radius: var(--radius-sm);
+	font-size: 12px;
+	font-weight: 600;
+	cursor: pointer;
+	background: rgba(79, 128, 255, 0.15);
+	border: 1px solid var(--color-accent);
+	color: var(--color-accent);
+	transition: background var(--transition-fast);
+}
+.advanceBtn:hover {
+	background: rgba(79, 128, 255, 0.28);
+}
+
+.payBtn {
+	background: rgba(76, 175, 80, 0.2);
+	color: var(--status-available);
+	border: 1px solid var(--status-available);
+}
+.payBtn:hover {
+	filter: brightness(1.15);
+}
+
+.confirmBtn {
+	background: rgba(79, 128, 255, 0.2);
+	color: var(--color-accent);
+	border: 1px solid var(--color-accent);
+}
+.confirmBtn:hover {
+	filter: brightness(1.15);
+}
+
+.clearBtn {
+	background: rgba(229, 57, 53, 0.12);
+	color: var(--color-danger);
+	border: 1px solid rgba(229, 57, 53, 0.35);
+}
+.clearBtn:hover {
+	background: rgba(229, 57, 53, 0.22);
+}
+
+/* ── Form fields ── */
+.fieldLabel {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-1);
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--color-text-muted);
+}
+
+.input {
+	padding: 7px 9px;
+	background: var(--color-surface-2);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sm);
+	color: var(--color-text);
+	font-size: 13px;
+	width: 100%;
+	transition: border-color var(--transition-fast);
+}
+.input:focus {
+	outline: none;
+	border-color: var(--color-accent);
+}
+
+/* ── Order items ── */
+.itemList {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-1);
+	max-height: 200px;
+	overflow-y: auto;
+}
+
+.emptyMsg {
+	margin: 0;
+	font-size: 12px;
+	color: var(--color-text-muted);
+}
+
+.orderItem {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	padding: 5px 6px;
+	background: var(--color-surface-2);
+	border-radius: var(--radius-sm);
+}
+
+.itemName {
+	flex: 1;
+	font-size: 12px;
+	color: var(--color-text);
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.qtyControls {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.qtyBtn {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: var(--color-surface-3);
+	border: 1px solid var(--color-border);
+	color: var(--color-text);
+	font-size: 13px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: background var(--transition-fast);
+}
+.qtyBtn:hover {
+	background: var(--color-accent);
+	border-color: var(--color-accent);
+}
+
+.qtyValue {
+	font-size: 12px;
+	font-weight: 700;
+	min-width: 18px;
+	text-align: center;
+	font-variant-numeric: tabular-nums;
+}
+
+.itemPrice {
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--status-available);
+	font-variant-numeric: tabular-nums;
+	min-width: 50px;
+	text-align: right;
+}
+
+.removeItemBtn {
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background: none;
+	border: none;
+	color: var(--color-text-muted);
+	font-size: 11px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition:
+		color var(--transition-fast),
+		background var(--transition-fast);
+}
+.removeItemBtn:hover {
+	color: var(--color-danger);
+	background: rgba(229, 57, 53, 0.12);
+}
+
+/* ── Order total ── */
+.orderTotal {
+	display: flex;
+	justify-content: space-between;
+	padding: var(--space-2) var(--space-1);
+	border-top: 1px solid var(--color-border);
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--color-text);
+	font-variant-numeric: tabular-nums;
+}
+
+/* ── Add item form ── */
+.addItemForm {
+	display: flex;
+	gap: var(--space-2);
+	align-items: flex-end;
+}
+
+.itemNameInput {
+	flex: 2;
+}
+.itemPriceInput {
+	flex: 1;
+	min-width: 0;
+}

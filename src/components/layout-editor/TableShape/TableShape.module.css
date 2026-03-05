@@ -1,0 +1,199 @@
+/* ── Outer wrapper — positioned absolutely by caller via transform ── */
+.wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	/* CSS transform applied inline */
+	transform-origin: center center;
+	user-select: none;
+	touch-action: none;
+}
+
+/* ── Selection outline ── */
+.wrapper.selected .body {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}
+
+/* ── Table body ── */
+.body {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 2px;
+	cursor: grab;
+	position: relative;
+	background: var(--status-color, var(--color-surface-3));
+	border: 2px solid var(--color-border);
+	transition:
+		background var(--transition-fast),
+		border-color var(--transition-fast),
+		box-shadow var(--transition-fast);
+}
+
+.body:active {
+	cursor: grabbing;
+}
+
+.wrapper:not(.readOnly):not(.selected) .body:hover {
+	border-color: var(--color-accent);
+	box-shadow: 0 0 0 3px rgba(79, 128, 255, 0.2);
+}
+
+/* ── Shapes ── */
+.shapeRound {
+	border-radius: 50%;
+}
+.shapeSquare {
+	border-radius: var(--radius-md);
+}
+.shapeRectangular {
+	border-radius: var(--radius-md);
+}
+
+/* ── Labels on the body ── */
+.tableNumber {
+	font-size: 15px;
+	font-weight: 700;
+	color: var(--color-text);
+	line-height: 1;
+	pointer-events: none;
+}
+
+.seatCount {
+	font-size: 10px;
+	font-weight: 600;
+	color: var(--color-text-muted);
+	background: rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	padding: 1px 5px;
+	pointer-events: none;
+	/* Always legible regardless of zoom */
+	min-width: 18px;
+	text-align: center;
+}
+
+.statusLabel {
+	font-size: 9px;
+	font-weight: 500;
+	color: var(--color-text-muted);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	pointer-events: none;
+}
+
+.reservationChip {
+	position: absolute;
+	bottom: 4px;
+	right: 4px;
+	font-size: 9px;
+	font-weight: 600;
+	background: rgba(251, 140, 0, 0.85);
+	color: #fff;
+	padding: 1px 4px;
+	border-radius: 4px;
+	pointer-events: none;
+	white-space: nowrap;
+}
+
+/* ── Read-only mode ── */
+.readOnly .body {
+	cursor: pointer;
+}
+.readOnly .body:hover {
+	filter: brightness(1.12);
+}
+
+/* ═══════════════════════════════
+ *  Resize handles
+ * ═══════════════════════════════ */
+.resizeHandle {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background: var(--color-accent);
+	border: 2px solid var(--color-bg);
+	border-radius: 2px;
+	z-index: 10;
+	touch-action: none;
+}
+
+/* Position each handle at its respective corner / edge */
+.handle-nw {
+	top: -5px;
+	left: -5px;
+	cursor: nw-resize;
+}
+.handle-n {
+	top: -5px;
+	left: calc(50% - 5px);
+	cursor: n-resize;
+}
+.handle-ne {
+	top: -5px;
+	right: -5px;
+	cursor: ne-resize;
+}
+.handle-e {
+	top: calc(50% - 5px);
+	right: -5px;
+	cursor: e-resize;
+}
+.handle-se {
+	bottom: -5px;
+	right: -5px;
+	cursor: se-resize;
+}
+.handle-s {
+	bottom: -5px;
+	left: calc(50% - 5px);
+	cursor: s-resize;
+}
+.handle-sw {
+	bottom: -5px;
+	left: -5px;
+	cursor: sw-resize;
+}
+.handle-w {
+	top: calc(50% - 5px);
+	left: -5px;
+	cursor: w-resize;
+}
+
+/* ═══════════════════════════════
+ *  Rotate handle
+ * ═══════════════════════════════ */
+.rotateHandle {
+	position: absolute;
+	top: -28px;
+	left: calc(50% - 8px);
+	width: 16px;
+	height: 16px;
+	background: var(--color-surface);
+	border: 2px solid var(--color-accent);
+	border-radius: 50%;
+	cursor: crosshair;
+	z-index: 10;
+	touch-action: none;
+	/* Tiny rotation icon */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 9px;
+	color: var(--color-accent);
+}
+
+/* Line connecting rotate handle to table top */
+.rotateHandle::after {
+	content: '';
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	width: 1px;
+	height: 10px;
+	background: var(--color-accent);
+	transform: translateX(-50%);
+}

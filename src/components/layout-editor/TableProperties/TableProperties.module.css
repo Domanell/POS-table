@@ -1,0 +1,196 @@
+.panel {
+	width: 220px;
+	min-width: 220px;
+	background: var(--color-surface);
+	border-left: 1px solid var(--color-border);
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+	flex-shrink: 0;
+}
+
+.panelHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--space-3) var(--space-4);
+	border-bottom: 1px solid var(--color-border);
+	flex-shrink: 0;
+}
+
+.panelTitle {
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--color-text-muted);
+}
+
+.tableIdBadge {
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--color-accent);
+}
+
+.fields {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-4);
+	padding: var(--space-4);
+	flex: 1;
+}
+
+.fieldLabel {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-1);
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--color-text-muted);
+}
+
+.input,
+.select {
+	padding: 6px 8px;
+	background: var(--color-surface-2);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sm);
+	color: var(--color-text);
+	font-size: 13px;
+	width: 100%;
+	transition: border-color var(--transition-fast);
+}
+.input:focus,
+.select:focus {
+	outline: none;
+	border-color: var(--color-accent);
+}
+.select option {
+	background: var(--color-surface-2);
+}
+
+/* ── Shape selector ── */
+.shapeRow {
+	display: flex;
+	gap: var(--space-1);
+}
+
+.shapeBtn {
+	flex: 1;
+	padding: 5px 4px;
+	background: var(--color-surface-2);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sm);
+	color: var(--color-text-muted);
+	font-size: 11px;
+	font-weight: 500;
+	cursor: pointer;
+	transition:
+		background var(--transition-fast),
+		border-color var(--transition-fast),
+		color var(--transition-fast);
+	text-align: center;
+}
+.shapeBtn:hover {
+	border-color: var(--color-accent);
+	color: var(--color-text);
+}
+.shapeBtnActive {
+	background: rgba(79, 128, 255, 0.18);
+	border-color: var(--color-accent);
+	color: var(--color-accent);
+}
+
+/* ── Read-only info rows ── */
+.infoRow {
+	display: flex;
+	justify-content: space-between;
+	font-size: 11px;
+}
+.infoLabel {
+	color: var(--color-text-muted);
+}
+.infoValue {
+	color: var(--color-text);
+	font-variant-numeric: tabular-nums;
+}
+
+/* ── Editable size row (W × H inputs + reset button) ── */
+.sizeRow {
+	display: flex;
+	align-items: center;
+	gap: var(--space-1);
+	margin-top: var(--space-1);
+}
+.sizeInput {
+	width: 0;
+	flex: 1;
+	padding: 5px 6px;
+	background: var(--color-surface-2);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sm);
+	color: var(--color-text);
+	font-size: 12px;
+	text-align: center;
+	transition: border-color var(--transition-fast);
+}
+.sizeInput:focus {
+	outline: none;
+	border-color: var(--color-accent);
+}
+.sizeSep {
+	color: var(--color-text-muted);
+	font-size: 12px;
+	flex-shrink: 0;
+}
+.resetBtn {
+	flex-shrink: 0;
+	padding: 4px 7px;
+	background: var(--color-surface-2);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sm);
+	color: var(--color-text-muted);
+	font-size: 14px;
+	cursor: pointer;
+	transition:
+		border-color var(--transition-fast),
+		color var(--transition-fast);
+}
+.resetBtn:hover {
+	border-color: var(--color-accent);
+	color: var(--color-accent);
+}
+
+/* ── Delete button ── */
+.deleteBtn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-2);
+	margin: var(--space-4);
+	padding: 8px;
+	border-radius: var(--radius-sm);
+	background: rgba(229, 57, 53, 0.12);
+	border: 1px solid rgba(229, 57, 53, 0.3);
+	color: var(--color-danger);
+	font-size: 12px;
+	font-weight: 600;
+	cursor: pointer;
+	transition:
+		background var(--transition-fast),
+		border-color var(--transition-fast);
+}
+.deleteBtn:hover {
+	background: rgba(229, 57, 53, 0.22);
+	border-color: var(--color-danger);
+}
+
+.empty {
+	padding: var(--space-5);
+	font-size: 12px;
+	color: var(--color-text-muted);
+	text-align: center;
+	margin: 0;
+}

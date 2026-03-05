@@ -1,0 +1,61 @@
+.root {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.controlsRow {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 var(--space-4);
+	height: 44px;
+	background: var(--color-surface);
+	border-bottom: 1px solid var(--color-border);
+	flex-shrink: 0;
+	gap: var(--space-4);
+}
+
+.canvasScroll {
+	flex: 1;
+	overflow: auto;
+	background: var(--color-bg);
+	background-image: radial-gradient(circle, var(--color-border) 1px, transparent 1px);
+	background-size: 24px 24px;
+}
+
+.canvas {
+	position: relative;
+	min-width: 100%;
+	min-height: 100%;
+}
+
+/* Reuse zone overlay styles */
+.zoneOverlay {
+	position: absolute;
+	pointer-events: none;
+	border-radius: var(--radius-lg);
+	border: 1.5px dashed rgba(255, 255, 255, 0.15);
+}
+
+.zoneLabel {
+	position: absolute;
+	top: 6px;
+	left: 10px;
+	font-size: 10px;
+	font-weight: 600;
+	color: rgba(255, 255, 255, 0.5);
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+}
+
+.empty {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	color: var(--color-text-muted);
+	font-size: 14px;
+}

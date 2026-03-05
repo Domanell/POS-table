@@ -1,0 +1,114 @@
+.wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform-origin: center center;
+	user-select: none;
+	touch-action: manipulation;
+}
+
+.body {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 2px;
+	cursor: pointer;
+	position: relative;
+	/* Status-driven background */
+	background: var(--status-color-bg, rgba(0, 0, 0, 0.2));
+	border: 2px solid var(--status-color, var(--color-border));
+	transition:
+		background var(--transition-base),
+		border-color var(--transition-base),
+		box-shadow var(--transition-fast),
+		filter var(--transition-fast);
+}
+
+.body:hover {
+	filter: brightness(1.12);
+	box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.07);
+}
+
+/* ── Selected outline ── */
+.wrapper.selected .body {
+	box-shadow: 0 0 0 3px var(--status-color, var(--color-accent));
+}
+
+/* ── Shapes ── */
+.shapeRound {
+	border-radius: 50%;
+}
+.shapeSquare {
+	border-radius: var(--radius-md);
+}
+.shapeRectangular {
+	border-radius: var(--radius-md);
+}
+
+/* ── Labels ── */
+.tableNumber {
+	font-size: 16px;
+	font-weight: 800;
+	color: var(--color-text);
+	pointer-events: none;
+	line-height: 1;
+}
+
+.seatBadge {
+	font-size: 9px;
+	font-weight: 600;
+	color: var(--color-text-muted);
+	pointer-events: none;
+	white-space: nowrap;
+}
+
+.statusLabel {
+	font-size: 9px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--status-color, var(--color-text-muted));
+	pointer-events: none;
+}
+
+/* ── Reservation chip ── */
+.reservationChip {
+	position: absolute;
+	bottom: 4px;
+	right: 4px;
+	font-size: 9px;
+	font-weight: 700;
+	background: rgba(251, 140, 0, 0.88);
+	color: #fff;
+	padding: 1px 5px;
+	border-radius: 4px;
+	pointer-events: none;
+	white-space: nowrap;
+}
+
+/* ── Order progress dot ── */
+.orderDot {
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	border: 1.5px solid var(--color-bg);
+}
+
+.orderDot[data-order-status='created'] {
+	background: var(--status-reserved);
+}
+.orderDot[data-order-status='in_preparation'] {
+	background: var(--status-occupied);
+}
+.orderDot[data-order-status='ready'] {
+	background: var(--status-available);
+}
+.orderDot[data-order-status='delivered'] {
+	background: var(--status-awaiting-payment);
+}
