@@ -8,7 +8,7 @@ import styles from './App.module.css';
 export default function App() {
 	return (
 		<AppProvider>
-			<BrowserRouter>
+			<BrowserRouter basename="/POS-table">
 				<div className={styles.shell}>
 					<RoleToggle />
 					<main className={styles.main}>
